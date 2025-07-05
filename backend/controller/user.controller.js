@@ -26,7 +26,12 @@ export const signup = async (req, res) => {
 
     if (newUser) {
       createTokenAndSaveCookie(newUser._id, res);
-      return res.status(200).json({ message: "register successfully", newUser });  // ✅ optional safety return
+      return res.status(200).json({ message: "register successfully", 
+         _id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+
+       });  // ✅ optional safety return
     }
 
   } catch (error) {
