@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useAuth } from '../context/AuthProvider';
 const Signup = () => {
-    const [authUser, setAuthUser] = useAuth;
+    const [authUser, setAuthUser] = useAuth();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const password = watch("password", "");

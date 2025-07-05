@@ -1,8 +1,11 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import { useAuth } from '../context/AuthProvider';
+
 
 const Login = () => {
+    const [authUser, setAuthUser] = useAuth();
 
      const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -21,8 +24,11 @@ const Login = () => {
             if(response.data)
             {
                 alert("Login  successfully ");
-                localStorage.setItem("user", JSON.stringify(response.data)); // parse kiya data ko and then store in localStorage
             }
+            localStorage.setItem("user", JSON.stringify(response.data)); // parse kiya data ko and then store in localStorage
+            setAuthUser(response.data); // set the user in auth context
+
+
         })
         .catch((error)=>{
             console.error("Error creating user", error);
