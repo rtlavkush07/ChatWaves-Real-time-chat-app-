@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useAuth } from '../context/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -81,7 +82,7 @@ const Login = () => {
                           
                      
                       <div className='flex justify-between pt-5'>
-                          <h1>Don't have any account? <span className='text-blue-700 underline cursor-pointer'>Signup</span></h1>
+                          <h1>Don't have any account? <Link  to={"/signup"} className='text-blue-700 underline cursor-pointer'>Signup</Link></h1>
                         <input type="submit" value = "Login" className='text-white bg-blue-500 p-2 rounded-md' ></input>
                       </div>
                     </div>

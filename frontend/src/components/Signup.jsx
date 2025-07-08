@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useAuth } from '../context/AuthProvider';
+import { Link } from 'react-router-dom';
 const Signup = () => {
     const [authUser, setAuthUser] = useAuth();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -29,6 +30,10 @@ const Signup = () => {
             }
             localStorage.setItem("user", JSON.stringify(response.data)); // parse kiya data ko and then store in localStorage
             setAuthUser(response.data); // set the user in auth context
+ 
+ 
+          
+
         })
         .catch((error)=>{
             console.error("Error creating user", error);
@@ -38,6 +43,8 @@ const Signup = () => {
                       }
 
         })
+
+       
     }
 
 
@@ -118,7 +125,7 @@ const Signup = () => {
                             *{errors.confirmPassword.message}*
                          </span>}
                         <div className='flex justify-between pt-5'>
-                            <h1>Have already account? <span className='text-blue-700 underline cursor-pointer'>Login</span></h1>
+                            <h1>Have already account? <Link to={"/login"} className='text-blue-700 underline cursor-pointer'>Login</Link></h1>
                             <input type="submit" value="Signup" className='text-white bg-blue-500 p-2 rounded-md' ></input>
                         </div>
                     </div>
