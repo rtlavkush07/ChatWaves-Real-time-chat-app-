@@ -81,3 +81,18 @@ export const logout = async (req, res) => {
     return res.status(500).json({ message: "Server Error" });
   }
 }
+
+export const getUserProfile = async (req, res) => {
+  try {
+    const loggedInUser = req.user._id;
+
+    const allUsers = await User.find({
+      _id: { $ne: loggedInUser }
+    }).select("-password");
+
+    res.status(201).json({ allUsers });
+  } catch (error) {
+    console.log("error in user fetch: " + error);
+    res.status(500).json({ message: "User not fetched. Server Error." });
+  }
+};
