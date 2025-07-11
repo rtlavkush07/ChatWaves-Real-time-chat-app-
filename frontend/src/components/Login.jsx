@@ -14,12 +14,12 @@ const Login = () => {
 
         const userData = {
 
-        
+         
             email: data.email,  
             password: data.password,
            
         }
-       await axios.post("http://localhost:3002/user/login",userData )
+       await axios.post("/api/user/login",userData )
         .then((response)=>{
             console.log("Login successfully", response.data);
             if(response.data)

@@ -21,7 +21,7 @@ const Signup = () => {
             password: data.password,
             confirmPassword: data.confirmPassword
         }
-      await  axios.post("http://localhost:3002/user/signup",userData )
+      await  axios.post("/api/user/signup",userData )
         .then((response)=>{
             console.log("User created successfully", response.data);
             if(response.data)
