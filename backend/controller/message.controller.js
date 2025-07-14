@@ -45,6 +45,7 @@ export const sendMessage = async (req, res) => {
 }
 
 
+
 export const getMessage = async (req, res) => {
     try {
 
@@ -58,6 +59,7 @@ export const getMessage = async (req, res) => {
             return res.status(404).json([]);
         }
         const messages = conversation.messages;
+
         res.status(201).json( messages );
         
     } catch (error) {
