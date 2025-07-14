@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useAuth } from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 const Signup = () => {
     const [authUser, setAuthUser] = useAuth();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -26,7 +27,7 @@ const Signup = () => {
             console.log("User created successfully", response.data);
             if(response.data)
             {
-                alert("Signup  successfully you can login now");
+                toast.success("Signup  successfully you can login now");
             }
             localStorage.setItem("user", JSON.stringify(response.data)); // parse kiya data ko and then store in localStorage
             setAuthUser(response.data); // set the user in auth context
@@ -39,7 +40,7 @@ const Signup = () => {
             console.error("Error creating user", error);
             if(error.response)
                       {
-                         alert("Error: "+error.response.data.error);
+                         toast.error("Error: "+error.response.data.error);
                       }
 
         })

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TbLogout2 } from "react-icons/tb";
 import axios from "axios";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 
 function Logout() {
@@ -13,7 +14,10 @@ try {
    localStorage.removeItem("user");
    Cookies.remove("jwt"); 
 setLoading(false);
-alert("Logout successful");
+toast.success("Logout successful");
+
+  // Redirect to login page
+  window.location.href = "/login";
 
     
 } catch (error) {
