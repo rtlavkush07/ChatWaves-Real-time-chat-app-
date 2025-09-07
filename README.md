@@ -1,6 +1,7 @@
-# 💬 KooKoo Online Chat Application
+# 💬 ChatWaves-Real-time-chat-app
 
-**KooKoo** is a real-time web chat application built using the **MERN stack** and **Socket.IO**. It enables users to chat with each other in real-time, view online users, search for others, and maintain chat history — all with a clean, responsive interface.
+
+**ChatWaves** is a real-time web chat application built using the **MERN stack** and **Socket.IO**. It enables users to chat with each other in real-time, view online users, search for others, and maintain chat history — all with a clean, responsive interface.
 
 ---
 
@@ -52,8 +53,8 @@ Make sure you have the following installed:
 #### 1. Clone the Repository
 
 
-git clone https://github.com/your-username/kookoo-chat-app.git
-cd kookoo-chat-app
+git clone https://github.com/your-username/ChatWaves-Real-time-chat-app.git
+cd ChatWaves-Real-time-chat-app
 2. Backend Setup (/backend)
 
 
@@ -86,7 +87,7 @@ Client will run at: http://localhost:5173
 
 📁 Folder Structure
 
-📦 kookoo-chat-app
+📦 ChatWaves-Real-time-chat-app
 ├── 📂 backend
 │   ├── 📂 controller
 │   ├── 📂 models
@@ -150,7 +151,7 @@ Lavkush (lavkumarnimcet2023@gmail.com)
 
 
 💪 My Efforts & Gratitude
-Building KooKoo Chat App wasn’t just a coding project — it was a journey filled with:
+Building ChatWaves-Real-time-chat-app wasn’t just a coding project — it was a journey filled with:
 
 Sleepless nights, debugging mysterious errors,
 
@@ -163,7 +164,7 @@ I took complete ownership of the app — from designing the user interface to wi
 I didn’t just want to build a chat app — I wanted to build an experience that feels smooth, fast, and human.
 
 🙏 Thank You!
-Thank you for checking out or using the KooKoo App.
+Thank you for checking out or using the ChatWaves.
 Your time and interest mean a lot. I hope you enjoy chatting as much as I enjoyed creating it.
 
 If you liked it or found it useful, feel free to give it a ⭐ on GitHub or share your feedback — it really motivates me to keep building better.
