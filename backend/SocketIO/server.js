@@ -7,7 +7,7 @@ import express from 'express';
 const app = express();
 const server = http.createServer(app);
 
-// Allow frontend at port 5173
+// Allow frontend at port 5173 cors origin
 const io = new Server(server, {
   cors: {
     origin: 'http://localhost:5173',
@@ -37,11 +37,49 @@ io.on('connection', (socket) => {
   // Notify all clients about online users
   io.emit('getonline', Object.keys(users));
 
-  socket.on('disconnect', () => {
-    console.log('Client disconnected:', socket.id);
-    delete users[userId];
-    io.emit('getonline', Object.keys(users));
-  });
+
+
+// Typing indicator events
+socket.on("typing", ({ senderId, receiverId }) => {
+
+  //  console.log(`Server received 'typing' event from ${senderId} for ${receiverId}`);
+  const receiverSocketId = getReceiverSocketId(receiverId);
+  if (receiverSocketId) {
+    io.to(receiverSocketId).emit("showTyping", { senderId });
+  }
 });
 
+// Stop typing indicator events
+socket.on("stopTyping", ({ senderId, receiverId }) => {
+  //  console.log(`Server received 'stopTyping' event from ${senderId}`);
+  const receiverSocketId = getReceiverSocketId(receiverId);
+  if (receiverSocketId) {
+    io.to(receiverSocketId).emit("hideTyping", { senderId });
+  }
+});
+
+
+
+//  disconnecting user
+socket.on('disconnect', () => {
+  console.log('Client disconnected:', socket.id);
+  
+  // Find the user ID associated with the disconnected socket
+  let disconnectedUserId;
+  for (const userId in users) {
+    if (users[userId] === socket.id) {
+      disconnectedUserId = userId;
+      break;
+    }
+  }
+
+  // If found, delete it and notify clients
+  if (disconnectedUserId) {
+    delete users[disconnectedUserId];
+    console.log(`User ${disconnectedUserId} disconnected. Online users:`, users);
+    io.emit('getonline', Object.keys(users));
+  }
+});
+
+});
 export { app, server, io };
